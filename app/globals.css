@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* { box-sizing: border-box; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+
+.sidebar-link {
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all;
+}
+.sidebar-link:hover { @apply bg-white/10 text-white; }
+.sidebar-link.active { @apply bg-white/20 text-white; }
+.sidebar-link:not(.active) { @apply text-blue-200; }
+
+.stat-card {
+  @apply bg-white rounded-xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow;
+}
+
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+}
