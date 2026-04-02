@@ -1,6 +1,8 @@
 import { supabaseAdmin } from '@/lib/supabase'
 import { Users, Mail, TrendingUp, DollarSign, Eye, CheckCircle, Clock, AlertTriangle } from 'lucide-react'
 import Link from 'next/link'
+import DashboardActions from './components/DashboardActions'
+import QuickActions from './components/QuickActions'
 
 async function getMetrics() {
   const [
@@ -127,12 +129,7 @@ export default async function DashboardPage() {
           </p>
         </div>
         <div className="flex gap-3">
-          <button
-            onClick={() => fetch('/api/cron/send-sequences', { method: 'POST' })}
-            className="bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
-          >
-            <Mail className="w-4 h-4" /> Envoyer séquences
-          </button>
+          <DashboardActions />
           <Link
             href="/validation"
             className="relative bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center gap-2"
@@ -266,34 +263,7 @@ export default async function DashboardPage() {
           </div>
 
           {/* Quick actions */}
-          <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
-            <h2 className="font-bold text-gray-900 mb-4">Actions rapides</h2>
-            <div className="space-y-2">
-              {[
-                { label: '🔍 Lancer scraping', href: '/api/scrape', method: 'POST', color: 'bg-blue-50 hover:bg-blue-100 text-blue-700' },
-                { label: '📊 Générer rapport', href: '/api/cron/daily-report', method: 'POST', color: 'bg-teal-50 hover:bg-teal-100 text-teal-700' },
-                { label: '👁 Voir portfolio', href: '/portfolio', method: 'GET', color: 'bg-purple-50 hover:bg-purple-100 text-purple-700' },
-              ].map(action => (
-                action.method === 'GET' ? (
-                  <Link
-                    key={action.label}
-                    href={action.href}
-                    className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${action.color}`}
-                  >
-                    {action.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={action.label}
-                    onClick={() => fetch(action.href, { method: action.method })}
-                    className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${action.color}`}
-                  >
-                    {action.label}
-                  </button>
-                )
-              ))}
-            </div>
-          </div>
+          <QuickActions />
         </div>
       </div>
     </div>
