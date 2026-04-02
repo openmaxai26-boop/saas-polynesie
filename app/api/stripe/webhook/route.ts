@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as Stripe.CheckoutSession
+    const session = event.data.object as Stripe.Checkout.Session
 
     const pack = session.metadata?.pack || 'starter'
     const leadId = session.metadata?.lead_id || null
