@@ -1,7 +1,7 @@
 import { Resend } from 'resend'
 import type { Lead } from './supabase'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_key')
 const FROM_EMAIL = 'contact@votreagence-pf.com'
 const FROM_NAME = 'Agence Web Polynésie'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://votre-domaine.vercel.app'
