@@ -2,9 +2,11 @@ import { Resend } from 'resend'
 import type { Lead } from './supabase'
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_key')
-const FROM_EMAIL = 'contact@votreagence-pf.com'
-const FROM_NAME = 'Agence Web Polynésie'
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://votre-domaine.vercel.app'
+// FROM_EMAIL : mettre votre domaine vérifié dans Resend, ex: contact@votredomaine.pf
+// En attendant, onboarding@resend.dev fonctionne pour les tests
+const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev'
+const FROM_NAME = process.env.FROM_NAME || 'Agence Web Polynésie'
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://saas-polynesie.vercel.app'
 
 // ============================================================
 // SÉQUENCE EMAIL — 4 emails de prospection
