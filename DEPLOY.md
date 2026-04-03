@@ -149,3 +149,4 @@ Le `vercel.json` configure :
 6. Vous livrez le site → bouton "Approuver livraison" dans Validations
 
 **Temps de gestion quotidienne : 15-30 minutes**
+# SaaS Polynésie - Trigger redeploy 20260403082640
