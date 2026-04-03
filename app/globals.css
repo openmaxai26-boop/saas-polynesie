@@ -2,22 +2,149 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+/* ─── Fonts Premium ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 * { box-sizing: border-box; }
-body { font-family: 'Inter', system-ui, sans-serif; }
 
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #f4f6fb;
+  color: #1a1f2e;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────── */
 .sidebar-link {
-  @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all;
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200;
+  color: rgba(255,255,255,0.6);
 }
-.sidebar-link:hover { @apply bg-white/10 text-white; }
-.sidebar-link.active { @apply bg-white/20 text-white; }
-.sidebar-link:not(.active) { @apply text-blue-200; }
+.sidebar-link:hover {
+  background: rgba(255,255,255,0.10);
+  color: white;
+}
+.sidebar-link.active {
+  background: rgba(0,212,204,0.15);
+  color: #00d4cc;
+  border: 1px solid rgba(0,212,204,0.25);
+}
+.sidebar-link:not(.active) { color: rgba(255,255,255,0.55); }
 
+/* ─── Cards ──────────────────────────────────────────────────── */
 .stat-card {
-  @apply bg-white rounded-xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow;
+  @apply bg-white rounded-2xl p-6 border border-gray-100/80 transition-all duration-200;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05);
+}
+.stat-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.09);
+  transform: translateY(-1px);
 }
 
-.badge {
-  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+.card {
+  @apply bg-white rounded-2xl border border-gray-100/80;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05);
 }
+
+/* ─── Badges ─────────────────────────────────────────────────── */
+.badge {
+  @apply inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold tracking-wide;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────── */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200;
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a80 100%);
+  box-shadow: 0 2px 8px rgba(37,99,235,0.30);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.40);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ocean {
+  @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200;
+  background: linear-gradient(135deg, #00d4cc 0%, #00a8a4 100%);
+  box-shadow: 0 2px 8px rgba(0,212,204,0.30);
+}
+.btn-ocean:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,212,204,0.40);
+}
+
+.btn-coral {
+  @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200;
+  background: linear-gradient(135deg, #ff5733 0%, #ed3610 100%);
+  box-shadow: 0 2px 8px rgba(255,87,51,0.30);
+}
+.btn-coral:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,87,51,0.40);
+}
+
+/* ─── Status dots ────────────────────────────────────────────── */
+.status-dot {
+  @apply w-2 h-2 rounded-full;
+}
+.status-dot.active { background: #10b981; box-shadow: 0 0 6px rgba(16,185,129,0.6); }
+.status-dot.inactive { background: #ef4444; }
+.status-dot.pending { background: #f59e0b; }
+
+/* ─── Score bar ──────────────────────────────────────────────── */
+.score-bar-track { @apply w-full bg-gray-100 rounded-full h-1.5; }
+.score-bar-fill { @apply h-1.5 rounded-full; }
+
+/* ─── Table ──────────────────────────────────────────────────── */
+.data-table th {
+  @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider;
+  color: #8b93a7;
+  background: #f8f9fc;
+}
+.data-table td { @apply px-4 py-3.5; }
+.data-table tbody tr {
+  @apply border-t border-gray-50 transition-colors;
+}
+.data-table tbody tr:hover { background: #f8f9fc; }
+
+/* ─── Sidebar wave decoration ────────────────────────────────── */
+.sidebar-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* ─── KPI delta ──────────────────────────────────────────────── */
+.kpi-value {
+  font-family: 'Syne', system-ui, sans-serif;
+  @apply text-3xl font-extrabold text-gray-900;
+  letter-spacing: -0.03em;
+}
+
+/* ─── Page title ─────────────────────────────────────────────── */
+.page-title {
+  font-family: 'Syne', system-ui, sans-serif;
+  @apply text-2xl font-bold text-gray-900;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-in { animation: slideIn 0.25s ease-out; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in { animation: fadeIn 0.3s ease-out; }
